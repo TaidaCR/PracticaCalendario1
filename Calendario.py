@@ -7,7 +7,8 @@ class Dia():
     
     #Devolver el dia escrito
     def info(self):
-        return f'{self.calcular_dia_semana()}, {self.dia:02d} de {self.de_num_a_mes()} de {self.año}'
+        MES= {1:'enero', 2:'febrero', 3:'marzo', 4:'abril', 5:'mayo', 6:'junio', 7:'julio', 8:'agosto', 9:'septiembre', 10:'octubre', 11:'noviembre', 12:'diciembre'}
+        return f'{self.calcular_dia_semana()}, {self.dia:02d} de {MES[self.mes]} de {self.año}'
    
     #verificar el dia
     def dia_a_verificar(self):
@@ -43,11 +44,6 @@ class Dia():
             raise ValueError(f'No existe tal día para ese mes')
 
         return sol
-    
-    #devolver el mes
-    def de_num_a_mes(self):
-        MES= {1:'enero', 2:'febrero', 3:'marzo', 4:'abril', 5:'mayo', 6:'junio', 7:'julio', 8:'agosto', 9:'septiembre', 10:'octubre', 11:'noviembre', 12:'diciembre'}
-        return MES[self.mes]
 
     #Calcular dia de la semana
     def calcular_dia_semana(self):
@@ -58,9 +54,7 @@ class Dia():
             B=self.año1//100
             C=2-B+B//4
             D=A//4
-            E=13*(self.mes1+1)//5
-            F=A+C+D+E+self.dia
-            dia_sem=F%7
+            E=13*(self.mes1+1)//5 
         
         else:
             A=self.año%100
@@ -68,8 +62,9 @@ class Dia():
             C=2-B+B//4
             D=A//4
             E=13*(self.mes+1)//5
-            F=A+C+D+E+self.dia
-            dia_sem=F%7
+        
+        F=A+C+D+E+self.dia
+        dia_sem=F%7
         
         if self.año==2000:
             if self.mes<3:

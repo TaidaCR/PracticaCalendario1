@@ -12,16 +12,11 @@ def test_calendario():
     calendario=Dia(14,2,2024)
     assert calendario.info()=='Miércoles, 14 de febrero de 2024'
 
-def test_de_num_a_mes():
-    Calendario=Dia(23,3,1956)
-
-    assert Calendario.de_num_a_mes()=='marzo'
-
 def test_dia_a_verificar():
     Calendario=Dia(20,2,1956)
     assert Calendario.dia_a_verificar()==True
 
-    Calendario=Dia(31,4,1994)
+    Calendario=Dia(30,4,2006)
     assert Calendario.dia_a_verificar()==True
 
 

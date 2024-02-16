@@ -10,9 +10,8 @@ class Dia():
         MES= {1:'enero', 2:'febrero', 3:'marzo', 4:'abril', 5:'mayo', 6:'junio', 7:'julio', 8:'agosto', 9:'septiembre', 10:'octubre', 11:'noviembre', 12:'diciembre'}
         return f'{self.calcular_dia_semana()}, {self.dia:02d} de {MES[self.mes]} de {self.año}'
    
-    #verificar el dia
+    #Verificar si el día existe
     def dia_a_verificar(self):
-        sol=''
         month31=[3,1,5,7,8,10,12]
         month30=[4,6,9,11]
         
@@ -40,7 +39,7 @@ class Dia():
                     sol=True
                 else:
                     raise ValueError(f'No existe tal día en ese mes')
-        else:
+        else: #Error de día
             raise ValueError(f'No existe tal día para ese mes')
 
         return sol
@@ -62,7 +61,7 @@ class Dia():
             C=2-B+B//4
             D=A//4
             E=13*(self.mes+1)//5
-        
+             
         F=A+C+D+E+self.dia
         dia_sem=F%7
         
@@ -70,17 +69,14 @@ class Dia():
             if self.mes<3:
                 if self.dia<30:
                     dia_sem
-
             else:
-                dia_sem=dia_sem-1
+                dia_sem-=1
 
         if self.año>2000:
             if dia_sem==0:
                 dia_sem=6
             else:
                 dia_sem-=1
-            
-
         
         DIA_SEMANA= {0:'Sábado', 1:'Domingo',2:'Lunes', 3:'Martes', 4:'Miércoles', 5:'Jueves', 6:'Viernes'}
         
@@ -91,7 +87,6 @@ class Dia():
 #print(calendario1.de_num_a_mes())
 #print(calendario1.dia_a_verificar())
 #print(calendario1.calcular_dia_semana())
-
 
 #calendario1=Dia(2,4,1956)
 #print (calendario1.calcular_dia_semana)
